@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        health-check-interval: 30s
+      config:
+        enabled: true
+        format: YAML
+        default-context: application
+  application:
+    name: notification-service
+  config:
+    import: optional:consul:localhost/8500
+
+kafka:
+  bootstrapAddress: localhost:9092
+
+logging:
+  level:
+    com.clouify.notificationservice.NotificationListener : INFO
